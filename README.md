@@ -42,7 +42,7 @@ python src/train.py glove.840B.300d.txt snli_1.0/snli_1.0_test.txt snli_1.0/snli
 Or an alternative way, you want to train models in Chinese, then you need to add a --chinese, for instance
 
 ```
-python src/train.py *chinese_glove.txt* *your_snli_train.txt* *your_snli_dev.txt* saved-model mlp --chinese
+python src/train.py chinese_glove.txt your_snli_train.txt your_snli_dev.txt saved-model mlp --chinese
 ```
 
 ## Deployment
