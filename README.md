@@ -88,7 +88,7 @@ Model Answer: N
 
 * **Erick Rocha Fonseca** - Re-implement - [his work](https://github.com/erickrf)
 * **David Huang** - convert input language - [his work](https://github.com/chuangag)
-* **Evelyn Hsin-Wei Yo ** - Removing conjuntion - [Hsin-Wei](https://github.com/hsinweiyo) 
+* **Evelyn Hsin-Wei Yo** - Removing conjuntion - [Hsin-Wei](https://github.com/hsinweiyo) 
 
 ## Acknowledgments
 
