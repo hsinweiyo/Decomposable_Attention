@@ -14,7 +14,6 @@ import xlwt
 def attention_softmax3d(values):
     """
     Performs a softmax over the attention values.
-
     :param values: 3d tensor with raw values
     :return: 3d tensor, same shape as input
     """
@@ -29,7 +28,6 @@ def clip_sentence(sentence, sizes):
     """
     Clip the input sentence placeholders to the length of the longest one in the
     batch. This saves processing time.
-
     :param sentence: tensor with shape (batch, time_steps)
     :param sizes: tensor with shape (batch)
     :return: tensor with shape (batch, time_steps)
@@ -44,11 +42,9 @@ def mask_3d(values, sentence_sizes, mask_value, dimension=2):
     """
     Given a batch of matrices, each with shape m x n, mask the values in each
     row after the positions indicated in sentence_sizes.
-
     This function is supposed to mask the last columns in the raw attention
     matrix (e_{i, j}) in cases where the sentence2 is smaller than the
     maximum.
-
     :param values: tensor with shape (batch_size, m, n)
     :param sentence_sizes: tensor with shape (batch_size) containing the
         sentence sizes that should be limited
@@ -87,7 +83,6 @@ class DecomposableNLIModel(object):
                  training=True, project_input=True, optimizer='adagrad'):
         """
         Create the model based on MLP networks.
-
         :param num_units: main dimension of the internal networks
         :param num_classes: number of possible classes
         :param vocab_size: size of the vocabulary
@@ -160,7 +155,6 @@ class DecomposableNLIModel(object):
     def _transformation_input(self, inputs, reuse_weights=False):
         """
         Apply any transformations to the input embeddings
-
         :param inputs: a tensor with shape (batch, time_steps, embeddings)
         :return: a tensor of the same shape of the input
         """
@@ -196,7 +190,6 @@ class DecomposableNLIModel(object):
     def project_embeddings(self, embeddings, reuse_weights=False):
         """
         Project word embeddings into another dimensionality
-
         :param embeddings: embedded sentence, shape (batch, time_steps,
             embedding_size)
         :param reuse_weights: reuse weights in internal layers
@@ -295,7 +288,6 @@ class DecomposableNLIModel(object):
         """
         Apply dropout to the inputs, followed by the weights and bias,
         and finally the relu activation
-
         :param inputs: 2d tensor
         :param weights: 2d tensor
         :param bias: 1d tensor
@@ -308,7 +300,6 @@ class DecomposableNLIModel(object):
     def _create_aggregate_input(self, v1, v2):
         """
         Create and return the input to the aggregate step.
-
         :param v1: tensor with shape (batch, time_steps, num_units)
         :param v2: tensor with shape (batch, time_steps, num_units)
         :return: a tensor with shape (batch, num_aggregate_inputs)
@@ -323,7 +314,6 @@ class DecomposableNLIModel(object):
     def attend(self, sent1, sent2):
         """
         Compute inter-sentence attention. This is step 1 (attend) in the paper
-
         :param sent1: tensor in shape (batch, time_steps, num_units),
             the projected sentence 1
         :param sent2: tensor in shape (batch, time_steps, num_units)
@@ -365,7 +355,6 @@ class DecomposableNLIModel(object):
         """
         Apply a feed forward network to compare one sentence to its
         soft alignment with the other.
-
         :param sentence: embedded and projected sentence,
             shape (batch, time_steps, num_units)
         :param soft_alignment: tensor with shape (batch, time_steps, num_units)
@@ -389,7 +378,6 @@ class DecomposableNLIModel(object):
         """
         Aggregate the representations induced from both sentences and their
         representations
-
         :param v1: tensor with shape (batch, time_steps, num_units)
         :param v2: tensor with shape (batch, time_steps, num_units)
         :return: logits over classes, shape (batch, num_classes)
@@ -444,7 +432,6 @@ class DecomposableNLIModel(object):
     def load(cls, dirname, session, training=False):
         """
         Load a previously saved file.
-
         :param dirname: directory with model files
         :param session: tensorflow session
         :param training: whether to create training tensors
@@ -513,7 +500,6 @@ class DecomposableNLIModel(object):
     def _run_on_validation(self, session, feeds):
         """
         Run the model with validation data, providing any useful information.
-
         :return: a tuple (validation_loss, validation_msg)
         """
         loss, acc = session.run([self.loss, self.accuracy], feeds)
@@ -525,7 +511,6 @@ class DecomposableNLIModel(object):
               clip_norm=10, report_interval=1000):
         """
         Train the model
-
         :param session: tensorflow session
         :type train_dataset: utils.RTEDataset
         :type valid_dataset: utils.RTEDataset
@@ -623,7 +608,6 @@ class DecomposableNLIModel(object):
     def evaluate(self, session, dataset, return_answers, batch_size=5000):
         """
         Run the model on the given dataset
-
         :param session: tensorflow session
         :param dataset: the dataset object
         :type dataset: utils.RTEDataset
