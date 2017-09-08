@@ -1,4 +1,4 @@
-# Decompoasble Attention Model with Chinese Social Studties Question Answering
+# Answering True/False Questions with a Decomposable Attention Model
 
 The code is modified from [here](https://github.com/erickrf/multiffn-nli), which is working on [A Decomposable Attention Model for Natural Language Inference](https://arxiv.org/abs/1606.01933). While I am working on the Chinese project of Social Studies, we have to find out if its entailment relation between hypothesis and evidence search result is True or False. Thanks to [Eric](https://github.com/erickrf), who replied my question patiently.
 
