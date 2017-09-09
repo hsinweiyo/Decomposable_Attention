@@ -86,11 +86,11 @@ Model Answer: N
 
 ## Authors
 
-* **Erick Rocha Fonseca** - Re-implement - [his work](https://github.com/erickrf)
 * **David Huang** - convert input language - [his work](https://github.com/chuangag)
-* **Evelyn Hsin-Wei Yo** - Removing conjuntion - [Hsin-Wei](https://github.com/hsinweiyo) 
+* **Evelyn Hsin-Wei Yo** - Removing punctuation - [Hsin-Wei](https://github.com/hsinweiyo) 
 
 ## Acknowledgments
 
+* **Erick Rocha Fonseca** - Re-implement - [Thanks to his open source](https://github.com/erickrf)
 * Much more faster using GPUs
 * There will be a xls file in the saved-model file which stores the hyperparameters and information of every time we saved models, it is useful to dig into the data
